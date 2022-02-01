@@ -1,6 +1,8 @@
 import React from 'react'
+import { useAppContext } from '../AppContext/AppContext';
 
-const TodoCounter = ({ total, completed }) => {
+const TodoCounter = () => {
+  const { totalTodos, completedTodos } = useAppContext()
   return (
     <div className='m-8'>
       <span className='text-6xl text-primary font-shadows font-extrabold'>
@@ -8,13 +10,13 @@ const TodoCounter = ({ total, completed }) => {
         <span
           className='text-white'
         >
-          &nbsp;{ completed }&nbsp;
+          &nbsp;{ completedTodos }&nbsp;
         </span>
         of the
         <span
           className='text-white'
         >
-          &nbsp;{ total }&nbsp;
+          &nbsp;{ totalTodos }&nbsp;
         </span>
         tasks
       </span>;

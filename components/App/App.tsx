@@ -1,4 +1,5 @@
 import React from 'react';
+import { AppContext, useAppContext } from '../AppContext/AppContext';
 import { TodoCard } from '../TodoCard/TodoCard';
 import { TodoCounter } from '../TodoCounter/TodoCounter';
 import { TodoFilter } from '../TodoFilter/TodoFilter';
@@ -15,15 +16,8 @@ localStorage.setItem('TODOS_V1',JSON.stringify(lostodos))
 localStorage.getItem('TODOS_V1')
 */
 
-const App = ({
-  totalTodos,
-  completedTodos,
-  filterValue,
-  setFilterValue,
-  filterTodos,
-  completeTodo,
-  deleteTodo
-}) => {
+const App = () => {
+  const { filterTodos, completeTodo, deleteTodo } = useAppContext()
   return (
     <div className="w-full h-screen relative bg-[url('https://www.streaver.com/images/bg.jpg')] bg-cover">
 
@@ -33,32 +27,25 @@ const App = ({
         <span className='text-6xl font-seymourOne font-extrabold font-seymour text-primary'>.</span>
 
         <div className='flex flex-col place-items-center'>
-          <TodoCounter
-            total={totalTodos}
-            completed={completedTodos}
-          />
-          <TodoFilter
-            filterValue={filterValue}
-            setFilterValue={setFilterValue}
-          />
+          <TodoCounter />
+          <TodoFilter />
         </div>
-
-        <TodoList>
-          {
-            filterTodos && filterTodos.map(
-              ({id, text, completed }:{id:number, text:string, completed: boolean}) => {
-                return (
-                  <TodoCard
-                    key={id}
-                    text={text}
-                    completed={completed}
-                    onComplete={() => completeTodo(text)}
-                    onDelete={() => deleteTodo(text)}
-                  />
-                );
-              })
-          }
-        </TodoList>
+          <TodoList>
+            {
+              filterTodos && filterTodos.map(
+                ({id, text, completed }:{id:number, text:string, completed: boolean}) => {
+                  return (
+                    <TodoCard
+                      key={id}
+                      text={text}
+                      completed={completed}
+                      onComplete={() => completeTodo(text)}
+                      onDelete={() => deleteTodo(text)}
+                    />
+                  );
+                })
+            }
+          </TodoList>
       </div>
     </div>
   );

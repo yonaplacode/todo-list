@@ -1,7 +1,9 @@
 import React from 'react'
+import { useAppContext } from '../AppContext/AppContext';
 import { CreateTodoButton } from '../CreateTodoButton/CreateTodoButton';
 
-const TodoFilter = ({ filterValue, setFilterValue }) => {
+const TodoFilter = () => {
+  const { filterValue, setFilterValue } = useAppContext()
   const onFilterValueChange = (event) => {
     setFilterValue(event.target.value)
   }
