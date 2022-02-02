@@ -1,19 +1,15 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 class MyDocument extends Document {
-  static async getInitialProps(ctx) {
-    const initialProps = await Document.getInitialProps(ctx)
-    return { ...initialProps }
-  }
-
   render() {
+    console.log("HELLOOOOO")
     return (
       <Html>
-        <Head />
+        <Head/>
         <body>
           <Main />
+          <div id="modal" />
           <NextScript />
-          <div id='modal-create-todo'></div>
         </body>
       </Html>
     )

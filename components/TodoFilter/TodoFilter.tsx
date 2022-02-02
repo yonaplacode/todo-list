@@ -3,7 +3,8 @@ import { useAppContext } from '../AppContext/AppContext';
 import { CreateTodoButton } from '../CreateTodoButton/CreateTodoButton';
 
 const TodoFilter = () => {
-  const { filterValue, setFilterValue } = useAppContext()
+  const { filterValue, setFilterValue, setOpen } = useAppContext()
+
   const onFilterValueChange = (event) => {
     setFilterValue(event.target.value)
   }
@@ -16,7 +17,7 @@ const TodoFilter = () => {
         onChange={onFilterValueChange}
         value={filterValue}
       />
-      <CreateTodoButton />
+      <CreateTodoButton setOpen={setOpen}/>
     </div>
   );
 };

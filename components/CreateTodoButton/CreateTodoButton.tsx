@@ -1,9 +1,13 @@
 import React from 'react'
 
-const CreateTodoButton = () => {
+const CreateTodoButton = (props) => {
+  const onClickButton = () => {
+    props.setOpen(true)
+  }
   return (
     <button
       className="flex flex-row justify-center items-center relative rounded-full ml-4 w-12 h-12 bg-primary"
+      onClick={onClickButton}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

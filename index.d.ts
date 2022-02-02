@@ -10,6 +10,9 @@ type TContextApp = {
   filterValue: string,
   setFilterValue: (string) => void,
   filterTodos: TTodo[],
+  addTodo: (string) => void,
   completeTodo: (string) => void,
   deleteTodo: (string) => void
+  open: boolean,
+  setOpen: (boolean) => void
 }

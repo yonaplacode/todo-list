@@ -1,5 +1,7 @@
 import React from 'react';
 import { AppContext, useAppContext } from '../AppContext/AppContext';
+import ClientOnlyPortal from '../ClientOnlyPortal/ClientOnlyPortal';
+import { ModalCreateTodo } from '../ModalCreateTodo/ModalCreateTodo';
 import { TodoCard } from '../TodoCard/TodoCard';
 import { TodoCounter } from '../TodoCounter/TodoCounter';
 import { TodoFilter } from '../TodoFilter/TodoFilter';
@@ -17,7 +19,8 @@ localStorage.getItem('TODOS_V1')
 */
 
 const App = () => {
-  const { filterTodos, completeTodo, deleteTodo } = useAppContext()
+  const { filterTodos, completeTodo, deleteTodo, open, setOpen } = useAppContext()
+
   return (
     <div className="w-full h-screen relative bg-[url('https://www.streaver.com/images/bg.jpg')] bg-cover">
 
@@ -46,6 +49,14 @@ const App = () => {
                 })
             }
           </TodoList>
+
+          {
+            open && (
+              <ClientOnlyPortal selector="#modal">
+                <ModalCreateTodo />
+              </ClientOnlyPortal>
+            )
+          }
       </div>
     </div>
   );

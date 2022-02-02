@@ -7,8 +7,11 @@ const TContextAppDefaultValues: TContextApp = {
   filterValue: '',
   setFilterValue: () => {},
   filterTodos: [],
+  addTodo: () => {},
   completeTodo: () => {},
   deleteTodo: () => {},
+  open: false,
+  setOpen: () => {}
 };
 const AppContext = createContext<TContextApp>(TContextAppDefaultValues)
 
@@ -19,6 +22,8 @@ const useAppContext = () => {
 const AppContextProvider = ({children}:{children: ReactNode}) => {
 
   const [todos, saveTodos] = useLocalStorage('TODOS_V1',[])
+
+  const [open, setOpen] = useState(false)
 
   const [filterValue, setFilterValue] = useState('')
 
@@ -34,6 +39,16 @@ const AppContextProvider = ({children}:{children: ReactNode}) => {
       const todoFilter = filterValue.toLowerCase()
       return todoText.includes(todoFilter)
     })
+  }
+
+  const addTodo = (text) => {
+    const newTodos = [...todos]
+    newTodos.push({
+      id: 100,
+      text,
+      completed: false
+    })
+    saveTodos(newTodos)
   }
 
   const completeTodo = (text) => {
@@ -56,8 +71,11 @@ const AppContextProvider = ({children}:{children: ReactNode}) => {
     filterValue,
     setFilterValue,
     filterTodos,
+    addTodo,
     completeTodo,
     deleteTodo,
+    open,
+    setOpen
   }
   return (
     <AppContext.Provider value={value}>
