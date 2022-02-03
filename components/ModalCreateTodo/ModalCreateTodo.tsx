@@ -35,7 +35,7 @@ const ModalCreateTodo = () => {
           placeholder='What you have to do?'
           value={todoValue}
           onChange={onChange}
-          className='bg-slate-300 border-solid border-2 rounded-lg shadow-md shadow-black text-2xl text-center h-96 w-auto placeholder:text-slate-600 placeholder: focus:outline-primary'
+          className='bg-slate-300 border-solid border-2 rounded-lg shadow-md shadow-black text-2xl items-center h-96 w-auto placeholder:text-slate-600 placeholder: focus:outline-primary'
         >
         </textarea>
         <div className='mt-14 flex justify-around

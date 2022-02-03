@@ -1,9 +1,9 @@
 import React from 'react';
 
-const CompleteTodoButton = ({onClick}) => {
+const CompleteTodoButton = ({completed, onClick}) => {
   return (
     <button
-      className="flex flex-row justify-center items-center rounded-full -ml-6 -mt-6 w-8 h-8 bg-white outline-primary border-solid border-2 border-primary active:scale-75"
+      className={`flex flex-row justify-center items-center rounded-full -ml-6 -mt-6 w-8 h-8 border-solid border-2 ${!completed ? 'bg-white outline-primary border-primary' : 'bg-primary outline-primary border-primary'} active:scale-75`}
       onClick={onClick}
     >
       <svg
@@ -11,7 +11,7 @@ const CompleteTodoButton = ({onClick}) => {
         className="h-6 w-6"
         fill="none"
         viewBox="0 0 24 24"
-        stroke="#39B54A"
+        stroke={`${!completed ? '#39B54A' : '#FFFF'}`}
       >
         <path
           strokeLinecap="round"

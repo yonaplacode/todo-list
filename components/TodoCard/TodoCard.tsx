@@ -6,26 +6,16 @@ const TodoCard = ({text, completed, onComplete, onDelete}:{text:string, complete
 
   return (
     <div>
-      <div className="flex place-items-center w-fit py-4 px-2 bg-emerald-100 shadow-lg rounded-r-lg my-2 mx-6">
+      <div className="flex place-items-center w-fit py-4 px-2 bg-amber-100 shadow-lg rounded-r-lg my-2 mx-6">
         <div className='flex flex-col'>
-          <CompleteTodoButton onClick={onComplete}/>
+          <CompleteTodoButton completed={completed} onClick={onComplete}/>
           <DeleteTodoButton onClick={onDelete}/>
         </div>
-        {
-          completed ?
-            <span
-              className="mx-2 text-gray-600 font-medium font-shadows text-2xl line-through"
-            >
-              { text }
-            </span>
-          :
           <span
-            className="mx-2 text-gray-600 font-medium font-shadows text-2xl"
+            className={`${completed ? 'text-gray-400 line-through' : 'text-black'} mx-2 font-bold font-shadows text-2xl`}
           >
             { text }
           </span>
-        }
-        
       </div>
     </div>
   );
